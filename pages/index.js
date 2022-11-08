@@ -3,12 +3,18 @@ import styled from 'styled-components';
 import { CSSReset } from '../src/components/CSSReset';
 import Menu from '../src/components/Menu';
 import { StyledTimeline } from '../src/components/Timeline';
+import { StyledFavorite } from '../src/components/Favorite';
+
+const StyledBanner = styled.div`
+  height: 230px;
+  overflow: hidden;
+  width: 100%;
+  img {
+    width: 100%;
+  }
+`;
 
 function HomePage() {
-  // const estilosDaHomePage = { backgroundColor: 'red' };
-
-  // console.log(config.playlists);
-
   return (
     <>
       <CSSReset />
@@ -20,18 +26,18 @@ function HomePage() {
         }}
       >
         <Menu />
+        <StyledBanner>
+          <img src="https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1430&q=80" />
+        </StyledBanner>
         <Header />
         <Timeline playlists={config.playlists}>Conteúdo</Timeline>
+        <Favorites favorites={config.favorites} />
       </div>
     </>
   );
 }
 
 export default HomePage;
-
-// function Menu() {
-//   return <div>Menu</div>;
-// }
 
 const SyledHeader = styled.div`
   img {
@@ -86,5 +92,32 @@ function Timeline(props) {
         );
       })}
     </StyledTimeline>
+  );
+}
+
+function Favorites(props) {
+  const favoritesNames = Object.keys(props.favorites);
+  console.log(favoritesNames);
+
+  const favos = props.favorites;
+  console.log(favos);
+  return (
+    <StyledFavorite>
+      <section>
+        <h2>Favoritos</h2>
+        <div>
+          {favos.map(favo => {
+            return (
+              <a href={favo.url}>
+                <div>
+                  <span>{favo.name}</span>
+                </div>
+                <img src={favo.thumb} />
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    </StyledFavorite>
   );
 }

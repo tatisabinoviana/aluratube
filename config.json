@@ -2,6 +2,18 @@
   "name": "Mario Souto (DevSoutinho)",
   "job": "Lead Software Engineer",
   "github": "omariosouto",
+  "favorites": [
+    {
+      "name": "DevSoutinho",
+      "url": "https://www.youtube.com/c/DevSoutinho",
+      "thumb": "https://yt3.ggpht.com/m8Yrqf0Y81L4mZ1Cq7rGnJ4NDHe6729rxiFZvWyy9-xd_Z7Osmza7J8NWpN1axMHcCb1oKJNgA=s88-c-k-c0x00ffffff-no-rj"
+    },
+    {
+      "name": "loianegroner",
+      "url": "https://www.youtube.com/c/loianegroner",
+      "thumb": "https://yt3.ggpht.com/ytc/AMLnZu_rVZTkA-_ywLx9cZklf7nyxhkaOwd99oGB-DDtRr0=s88-c-k-c0x00ffffff-no-rj"
+    }
+  ],
   "playlists": {
     "jogos": [
       {
