@@ -4,17 +4,11 @@ import { CSSReset } from '../src/components/CSSReset';
 import Menu from '../src/components/Menu';
 import { StyledTimeline } from '../src/components/Timeline';
 import { StyledFavorite } from '../src/components/Favorite';
-
-const StyledBanner = styled.div`
-  height: 230px;
-  overflow: hidden;
-  width: 100%;
-  img {
-    width: 100%;
-  }
-`;
+import React from 'react';
 
 function HomePage() {
+  const [valorDoFiltro, setValorDoFiltro] = React.useState('');
+
   return (
     <>
       <CSSReset />
@@ -25,12 +19,14 @@ function HomePage() {
           flex: 1
         }}
       >
-        <Menu />
-        <StyledBanner>
-          <img src="https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1430&q=80" />
-        </StyledBanner>
+        <Menu
+          valorDoFiltro={valorDoFiltro}
+          setValorDoFiltro={setValorDoFiltro}
+        />
         <Header />
-        <Timeline playlists={config.playlists}>Conteúdo</Timeline>
+        <Timeline searchValue={valorDoFiltro} playlists={config.playlists}>
+          Conteúdo
+        </Timeline>
         <Favorites favorites={config.favorites} />
       </div>
     </>
@@ -46,7 +42,6 @@ const SyledHeader = styled.div`
     border-radius: 50%;
   }
   .user-info {
-    margin-top: 50px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -54,10 +49,15 @@ const SyledHeader = styled.div`
     gap: 16px;
   }
 `;
+const StyledBanner = styled.div`
+  background-color: blue;
+  background-image: url(${config.bg});
+  height: 230px;
+`;
 function Header() {
   return (
     <SyledHeader>
-      {/* <img src="banner" /> */}
+      <StyledBanner />
       <section className="user-info">
         <img src={`https://github.com/${config.github}.png`} />
         <div>
@@ -68,25 +68,30 @@ function Header() {
     </SyledHeader>
   );
 }
-function Timeline(props) {
-  // console.log('Dentro do componente', props.playlists);
+function Timeline({ searchValue, ...props }) {
   const playlistNames = Object.keys(props.playlists);
   return (
     <StyledTimeline>
       {playlistNames.map(playlistName => {
         const videos = props.playlists[playlistName];
         return (
-          <section>
+          <section key={playlistName}>
             <h2>{playlistName}</h2>
             <div>
-              {videos.map(video => {
-                return (
-                  <a href={video.url}>
-                    <img src={video.thumb} />
-                    <span>{video.title}</span>
-                  </a>
-                );
-              })}
+              {videos
+                .filter(video => {
+                  const titleNormalized = video.title.toLowerCase();
+                  const searchValueNormalized = searchValue.toLowerCase();
+                  return titleNormalized.includes(searchValueNormalized);
+                })
+                .map(video => {
+                  return (
+                    <a key={video.url} href={video.url}>
+                      <img src={video.thumb} />
+                      <span>{video.title}</span>
+                    </a>
+                  );
+                })}
             </div>
           </section>
         );
@@ -96,11 +101,8 @@ function Timeline(props) {
 }
 
 function Favorites(props) {
-  const favoritesNames = Object.keys(props.favorites);
-  console.log(favoritesNames);
-
   const favos = props.favorites;
-  console.log(favos);
+
   return (
     <StyledFavorite>
       <section>
@@ -108,7 +110,7 @@ function Favorites(props) {
         <div>
           {favos.map(favo => {
             return (
-              <a href={favo.url}>
+              <a key={favo.url} href={favo.url}>
                 <div>
                   <span>{favo.name}</span>
                 </div>
