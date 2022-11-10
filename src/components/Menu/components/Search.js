@@ -27,6 +27,7 @@ const StyledSearch = styled.div`
     border-left: 1px solid ${({ theme }) => theme.borderBase};
     width: 40px;
     height: 40px;
+
     @media (min-width: 600px) {
       width: 64px;
       height: 40px;

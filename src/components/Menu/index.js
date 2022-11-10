@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Search from './components/Search';
+import DarkButton from './components/DarkButton';
 
 const StyledMenu = styled.header`
   display: flex;
@@ -23,6 +24,9 @@ const StyledMenu = styled.header`
       fill: ${({ theme }) => theme.textColorBase || '#222222'};
     }
   }
+  .searchprocucar {
+    background-color: red;
+  }
 `;
 
 export default function Menu({ valorDoFiltro, setValorDoFiltro }) {
@@ -34,7 +38,9 @@ export default function Menu({ valorDoFiltro, setValorDoFiltro }) {
       <Search
         valorDoFiltro={valorDoFiltro}
         setValorDoFiltro={setValorDoFiltro}
+        className="searchprocucar"
       />
+      <DarkButton />
     </StyledMenu>
   );
 }
