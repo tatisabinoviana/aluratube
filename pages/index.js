@@ -1,6 +1,5 @@
 import config from '../config.json';
 import styled from 'styled-components';
-import { CSSReset } from '../src/components/CSSReset';
 import Menu from '../src/components/Menu';
 import { StyledTimeline } from '../src/components/Timeline';
 import { StyledFavorite } from '../src/components/Favorite';
@@ -11,7 +10,6 @@ function HomePage() {
 
   return (
     <>
-      <CSSReset />
       <div
         style={{
           display: 'flex',
@@ -36,6 +34,7 @@ function HomePage() {
 export default HomePage;
 
 const SyledHeader = styled.div`
+  background-color: ${({ theme }) => theme.backgroundLevel1};
   img {
     width: 80px;
     height: 80px;
@@ -51,13 +50,13 @@ const SyledHeader = styled.div`
 `;
 const StyledBanner = styled.div`
   background-color: blue;
-  background-image: url(${config.bg});
+  background-image: url(${({ bg }) => bg});
   height: 230px;
 `;
 function Header() {
   return (
     <SyledHeader>
-      <StyledBanner />
+      <StyledBanner bg={config.bg} />
       <section className="user-info">
         <img src={`https://github.com/${config.github}.png`} />
         <div>
