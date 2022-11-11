@@ -26,7 +26,10 @@ export default function RegisterVideo() {
   // precisamos ter o on submit no nosso form
   //limpar o formulario apos o sbmit
   const formCadastro = useForm({
-    initialValues: { titulo: 'Frost punk', url: 'https://youtube..' }
+    initialValues: {
+      titulo: 'Gas Station Simulator - 8 dias sem dormir!',
+      url: 'https://www.youtube.com/watch?v=R1d0DyRDG_Q'
+    }
   });
   const [formVisivel, setFormVisivel] = React.useState(true);
   return (
@@ -62,6 +65,13 @@ export default function RegisterVideo() {
               value={formCadastro.values.url}
               onChange={formCadastro.handleChange}
             />
+            <img
+              src={`${formCadastro.values.url.replace(
+                'https://www.youtube.com/watch?v=',
+                'https://img.youtube.com/vi/'
+              )}/hqdefault.jpg`}
+            />
+
             <button type="submit">Cadastrar</button>
           </div>
         </form>
