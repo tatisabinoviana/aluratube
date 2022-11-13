@@ -1,12 +1,35 @@
-import config from '../config.json';
+import { createClient } from '@supabase/supabase-js';
+import React from 'react';
 import styled from 'styled-components';
+import config from '../config.json';
+import { StyledFavorite } from '../src/components/Favorite';
 import Menu from '../src/components/Menu';
 import { StyledTimeline } from '../src/components/Timeline';
-import { StyledFavorite } from '../src/components/Favorite';
-import React from 'react';
+import { videoService } from '../src/service/videoService';
 
 function HomePage() {
+  const service = videoService();
   const [valorDoFiltro, setValorDoFiltro] = React.useState('');
+  const [playlists, setPlaylists] = React.useState({}); // config.playlists
+  // const playlists = {
+  //   jogos: []
+  // };
+
+  React.useEffect(() => {
+    console.log('useEffect');
+    service.getAllVideos().then(dados => {
+      console.log(dados.data);
+      //forma imutável
+      const novasPlaylists = { ...playlists };
+      dados.data.forEach(video => {
+        if (!novasPlaylists[video.playlist]) {
+          novasPlaylists[video.playlist] = [];
+        }
+        novasPlaylists[video.playlist].push(video);
+      });
+      setPlaylists(novasPlaylists);
+    });
+  }, []);
 
   return (
     <>
@@ -22,7 +45,7 @@ function HomePage() {
           setValorDoFiltro={setValorDoFiltro}
         />
         <Header />
-        <Timeline searchValue={valorDoFiltro} playlists={config.playlists}>
+        <Timeline searchValue={valorDoFiltro} playlists={playlists}>
           Conteúdo
         </Timeline>
         <Favorites favorites={config.favorites} />
