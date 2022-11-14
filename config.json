@@ -1,8 +1,8 @@
 {
-  "name": "Mario Souto (DevSoutinho)",
-  "job": "Lead Software Engineer",
-  "bg": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
-  "github": "omariosouto",
+  "name": "Tati (tatisabinoviana)",
+  "job": "Desenvolvedora Jr",
+  "bg": "https://images.unsplash.com/photo-1613376023733-0a73315d9b06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  "github": "tatisabinoviana",
   "favorites": [
     {
       "name": "DevSoutinho",
@@ -16,6 +16,13 @@
     }
   ],
   "playlists": {
+    "lista": [
+      {
+        "name": "Estudar",
+        "url": "https://www.youtube.com/playlist?list=PLvbc5G7xNI6SICsJt3jbbueHF9wWpfRrf",
+        "thumb": "https://i.ytimg.com/vi/rJTw_LmDS4Y/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBtQNxnkjplUZPXS_CR27V1FzMxZQ"
+      }
+    ],
     "jogos": [
       {
         "title": "Frostpunk - Neve e Steak tartare",

@@ -47,7 +47,8 @@ export default function RegisterVideo() {
   const formCadastro = useForm({
     initialValues: {
       titulo: 'Frostpunk - Neve e Steak tartare',
-      url: 'https://www.youtube.com/watch?v=QsqatJxAUtk'
+      url: 'https://www.youtube.com/watch?v=QsqatJxAUtk',
+      playlist: 'jogos'
     }
   });
   const [formVisivel, setFormVisivel] = React.useState(false);
@@ -69,7 +70,7 @@ export default function RegisterVideo() {
                 title: formCadastro.values.titulo,
                 url: formCadastro.values.url,
                 thumb: getThumbnail(formCadastro.values.url),
-                playlist: 'jogos'
+                playlist: formCadastro.values.playlist
               })
               .then(oqueveio => {
                 console.log(oqueveio);
@@ -102,12 +103,13 @@ export default function RegisterVideo() {
               value={formCadastro.values.url}
               onChange={formCadastro.handleChange}
             />
-            {/* <img
-              src={`${formCadastro.values.url.replace(
-                'https://www.youtube.com/watch?v=',
-                'https://img.youtube.com/vi/'
-              )}/hqdefault.jpg`}
-            /> */}
+            <img src={getThumbnail(formCadastro.values.url)} />
+            <input
+              placeholder="Categoria do vídeo"
+              name="playlist"
+              value={formCadastro.values.playlist}
+              onChange={formCadastro.handleChange}
+            />
 
             <button type="submit">Cadastrar</button>
           </div>

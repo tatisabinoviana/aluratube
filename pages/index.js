@@ -11,14 +11,10 @@ function HomePage() {
   const service = videoService();
   const [valorDoFiltro, setValorDoFiltro] = React.useState('');
   const [playlists, setPlaylists] = React.useState({}); // config.playlists
-  // const playlists = {
-  //   jogos: []
-  // };
+  const [favorites, setFavorites] = React.useState([]); // config.favorites
 
   React.useEffect(() => {
-    console.log('useEffect');
     service.getAllVideos().then(dados => {
-      console.log(dados.data);
       //forma imutável
       const novasPlaylists = { ...playlists };
       dados.data.forEach(video => {
@@ -28,6 +24,15 @@ function HomePage() {
         novasPlaylists[video.playlist].push(video);
       });
       setPlaylists(novasPlaylists);
+    });
+    service.getAllFavorites().then(dados => {
+      const novosFavorites = [...favorites];
+
+      dados.data.forEach(favorito => {
+        novosFavorites.push(favorito);
+      });
+
+      setFavorites(novosFavorites);
     });
   }, []);
 
@@ -48,7 +53,7 @@ function HomePage() {
         <Timeline searchValue={valorDoFiltro} playlists={playlists}>
           Conteúdo
         </Timeline>
-        <Favorites favorites={config.favorites} />
+        <Favorites searchValue={valorDoFiltro} favorites={favorites} />
       </div>
     </>
   );
@@ -72,9 +77,8 @@ const SyledHeader = styled.div`
   }
 `;
 const StyledBanner = styled.div`
-  background-color: blue;
   background-image: url(${({ bg }) => bg});
-  height: 230px;
+  height: 200px;
 `;
 function Header() {
   return (
@@ -92,6 +96,7 @@ function Header() {
 }
 function Timeline({ searchValue, ...props }) {
   const playlistNames = Object.keys(props.playlists);
+
   return (
     <StyledTimeline>
       {playlistNames.map(playlistName => {
@@ -140,6 +145,12 @@ function Favorites(props) {
               </a>
             );
           })}
+          <button
+            className="add-favorite"
+            onClick={() => console.log('fui clicado')}
+          >
+            novo
+          </button>
         </div>
       </section>
     </StyledFavorite>

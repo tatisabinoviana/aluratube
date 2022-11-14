@@ -1,6 +1,28 @@
 import styled from 'styled-components';
 
 export const StyledFavorite = styled.div`
+  .add-favorite {
+    width: 90px;
+    height: 90px;
+    font-size: 20px;
+    color: inherit;
+    /* position: fixed; */
+    /* bottom: 16px; */
+    /* right: 16px; */
+    margin-top: 26px;
+    /* border: 0; */
+    border-color: inherit;
+    background-color: ${({ theme }) => theme.backgroundLevel2};
+
+    /* background-color: red; */
+    /* border-radius: 50%; */
+    /* z-index: 99; */
+    /* cursor: pointer; */
+    /* font-weight: 500; */
+    /* object-fit: cover; */
+    /* height: auto; */
+    border-radius: 50%;
+  }
   /* flex: 1; */
   width: 100%;
   padding: 16px;
@@ -13,10 +35,10 @@ export const StyledFavorite = styled.div`
 
   img {
     /* aspect-ratio: 16/9; */
-    font-weight: 500;
-    object-fit: cover;
     /* width: 100%; */
     /* max-width: 210px; */
+    font-weight: 500;
+    object-fit: cover;
     height: auto;
     border-radius: 50%;
   }
