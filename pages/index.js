@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import React from 'react';
 import styled from 'styled-components';
 import config from '../config.json';
+import DeleteFavoriteItem from '../src/components/DeleteItem';
 import { StyledFavorite } from '../src/components/Favorite';
 import Menu from '../src/components/Menu';
 import NewFavoriteButton from '../src/components/RegisterFavorite';
@@ -138,14 +139,17 @@ function Favorites(props) {
         <div>
           {favos.map(favo => {
             return (
-              <a key={favo.url} href={favo.url}>
-                <div>
+              <div key={favo.url}>
+                <a href={favo.url}>
                   <span>{favo.name}</span>
-                </div>
-                <img src={favo.thumb} />
-              </a>
+                  <img src={favo.thumb} />
+                </a>
+
+                <button onClick={() => DeleteFavoriteItem(favo.id)}>❌</button>
+              </div>
             );
           })}
+
           <NewFavoriteButton />
         </div>
       </section>

@@ -35,13 +35,14 @@ export const StyledFavorite = styled.div`
 
   img {
     /* aspect-ratio: 16/9; */
-    /* width: 100%; */
-    /* max-width: 210px; */
+    width: 100%;
+    max-width: 100px;
     font-weight: 500;
     object-fit: cover;
     height: auto;
     border-radius: 50%;
   }
+
   section {
     width: 100%;
     padding: 0;
@@ -49,7 +50,7 @@ export const StyledFavorite = styled.div`
     padding: 16px;
     div {
       width: calc(100vw - 16px * 4);
-      display: grid;
+      display: table-cell;
       grid-gap: 16px;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       grid-auto-flow: column;

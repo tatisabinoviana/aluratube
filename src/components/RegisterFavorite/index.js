@@ -11,7 +11,6 @@ function useForm(propsDoForm) {
 
       const name = evento.target.name;
       setValues({ ...values, [name]: value });
-      console.log('name:::', name);
     },
     clearForm() {
       setValues({});
@@ -44,7 +43,7 @@ export default function NewFavoriteButton() {
           onSubmit={evento => {
             console.log(evento);
             evento.preventDefault();
-            // //Contrato entre o nosso front e o backend
+            //Contrato entre o nosso front e o backend
             supabase
               .from('favorito')
               .insert({
