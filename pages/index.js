@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import config from '../config.json';
 import { StyledFavorite } from '../src/components/Favorite';
 import Menu from '../src/components/Menu';
+import NewFavoriteButton from '../src/components/RegisterFavorite';
 import { StyledTimeline } from '../src/components/Timeline';
 import { videoService } from '../src/service/videoService';
 
@@ -145,12 +146,7 @@ function Favorites(props) {
               </a>
             );
           })}
-          <button
-            className="add-favorite"
-            onClick={() => console.log('fui clicado')}
-          >
-            novo
-          </button>
+          <NewFavoriteButton />
         </div>
       </section>
     </StyledFavorite>
