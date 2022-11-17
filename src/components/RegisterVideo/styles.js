@@ -56,6 +56,9 @@ export const StyledRegisterVideo = styled.div`
       position: relative;
       padding: 16px;
       padding-top: 40px;
+      & > img {
+        margin-bottom: 20px;
+      }
     }
   }
   input {
