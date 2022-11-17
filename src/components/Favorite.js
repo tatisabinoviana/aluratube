@@ -29,7 +29,7 @@ export const StyledFavorite = styled.div`
     overflow-x: auto;
     /* height: 30px; */
     div {
-      /* width: calc(100vw - 16px * 4); */
+      width: 200px;
       display: grid;
       grid-gap: 16px;
       /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
