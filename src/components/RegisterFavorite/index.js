@@ -27,10 +27,9 @@ const supabase = createClient(PROJECT_URL, PUBLIC_KEY);
 export default function NewFavoriteButton() {
   const formCadastro = useForm({
     initialValues: {
-      name: 'DevSoutinho',
-      url: 'https://www.youtube.com/c/DevSoutinho',
-      thumb:
-        'https://yt3.ggpht.com/m8Yrqf0Y81L4mZ1Cq7rGnJ4NDHe6729rxiFZvWyy9-xd_Z7Osmza7J8NWpN1axMHcCb1oKJNgA=s88-c-k-c0x00ffffff-no-rj'
+      name: '',
+      url: '',
+      thumb: ''
     }
   });
   const [formVisivel, setFormVisivel] = React.useState(false);
@@ -91,7 +90,9 @@ export default function NewFavoriteButton() {
               value={formCadastro.values.thumb}
               onChange={formCadastro.handleChange}
             />
-            <img src={formCadastro.values.thumb} />
+            {formCadastro.values.thumb && (
+              <img src={formCadastro.values.thumb} />
+            )}
 
             <button type="submit">Cadastrar</button>
           </div>

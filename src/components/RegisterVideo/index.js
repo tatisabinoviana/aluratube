@@ -46,9 +46,9 @@ export default function RegisterVideo() {
   //limpar o formulario apos o sbmit
   const formCadastro = useForm({
     initialValues: {
-      titulo: 'Frostpunk - Neve e Steak tartare',
-      url: 'https://www.youtube.com/watch?v=QsqatJxAUtk',
-      playlist: 'jogos'
+      titulo: '',
+      url: '',
+      playlist: ''
     }
   });
   const [formVisivel, setFormVisivel] = React.useState(false);
@@ -103,13 +103,15 @@ export default function RegisterVideo() {
               value={formCadastro.values.url}
               onChange={formCadastro.handleChange}
             />
-            <img src={getThumbnail(formCadastro.values.url)} />
             <input
               placeholder="Categoria do vídeo"
               name="playlist"
               value={formCadastro.values.playlist}
               onChange={formCadastro.handleChange}
             />
+            {formCadastro.values.url && (
+              <img src={getThumbnail(formCadastro.values.url)} />
+            )}
 
             <button type="submit">Cadastrar</button>
           </div>
