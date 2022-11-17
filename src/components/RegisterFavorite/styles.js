@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 export const StyledRegisterFavorite = styled.div`
   .add-favorite {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     font-size: 20px;
     color: inherit;
     /* position: fixed; */
     /* bottom: 16px; */
-    /* right: 16px; */
-    margin-top: 26px;
+    margin-left: 16px;
+    margin-top: 6px;
     /* border: 0; */
     border-color: inherit;
     background-color: ${({ theme }) => theme.backgroundLevel2};
@@ -49,6 +49,8 @@ export const StyledRegisterFavorite = styled.div`
     cursor: pointer;
   }
   button[type='submit'] {
+    width: 290px;
+    height: 30px;
     background-color: red;
     padding: 8px 16px;
     border: none;

@@ -27,19 +27,26 @@ export const StyledTimeline = styled.div`
       width: calc(100vw - 16px * 4);
       display: grid;
       grid-gap: 16px;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       grid-auto-flow: column;
-      grid-auto-columns: minmax(200px, 1fr);
-      overflow-x: scroll;
+      overflow-x: auto;
       scroll-snap-type: x mandatory;
+      .video-id {
+        width: 250px;
+        overflow-x: hidden;
+      }
       a {
         scroll-snap-align: start;
         span {
+          width: 216px;
           padding-top: 8px;
           display: block;
           padding-right: 24px;
           color: ${({ theme }) => theme.textColorBase || '#222222'};
         }
+      }
+      button {
+        height: 20px;
+        width: 20px;
       }
     }
   }

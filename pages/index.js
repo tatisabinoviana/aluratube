@@ -1,8 +1,8 @@
-import { createClient } from '@supabase/supabase-js';
 import React from 'react';
 import styled from 'styled-components';
 import config from '../config.json';
-import DeleteFavoriteItem from '../src/components/DeleteItem';
+import DeleteFavoriteItem from '../src/components/DeleteFavoriteItem';
+import DeleteVideo from '../src/components/DeleteVideo';
 import { StyledFavorite } from '../src/components/Favorite';
 import Menu from '../src/components/Menu';
 import NewFavoriteButton from '../src/components/RegisterFavorite';
@@ -115,10 +115,13 @@ function Timeline({ searchValue, ...props }) {
                 })
                 .map(video => {
                   return (
-                    <a key={video.url} href={video.url}>
-                      <img src={video.thumb} />
-                      <span>{video.title}</span>
-                    </a>
+                    <div key={video.id} className="video-id">
+                      <button onClick={() => DeleteVideo(video.id)}>❌</button>
+                      <a key={video.url} href={video.url}>
+                        <img src={video.thumb} />
+                        <span>{video.title}</span>
+                      </a>
+                    </div>
                   );
                 })}
             </div>
@@ -133,26 +136,28 @@ function Favorites(props) {
   const favos = props.favorites;
 
   return (
-    <StyledFavorite>
-      <section>
-        <h2>Favoritos</h2>
-        <div>
-          {favos.map(favo => {
-            return (
-              <div key={favo.url}>
-                <a href={favo.url}>
-                  <span>{favo.name}</span>
-                  <img src={favo.thumb} />
-                </a>
-
-                <button onClick={() => DeleteFavoriteItem(favo.id)}>❌</button>
-              </div>
-            );
-          })}
-
-          <NewFavoriteButton />
-        </div>
-      </section>
-    </StyledFavorite>
+    <>
+      <StyledFavorite>
+        <section>
+          <h2>Favoritos</h2>
+          <div>
+            {favos.map(favo => {
+              return (
+                <div key={favo.id} className="favo-id">
+                  <button onClick={() => DeleteFavoriteItem(favo.id)}>
+                    ❌
+                  </button>
+                  <a href={favo.url}>
+                    <img src={favo.thumb} />
+                    <span>{favo.name}</span>
+                  </a>
+                </div>
+              );
+            })}
+            <NewFavoriteButton />
+          </div>
+        </section>
+      </StyledFavorite>
+    </>
   );
 }

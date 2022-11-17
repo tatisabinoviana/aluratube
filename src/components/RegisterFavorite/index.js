@@ -4,6 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 
 function useForm(propsDoForm) {
   const [values, setValues] = React.useState(propsDoForm.initialValues);
+
   return {
     values,
     handleChange: evento => {
@@ -33,6 +34,9 @@ export default function NewFavoriteButton() {
     }
   });
   const [formVisivel, setFormVisivel] = React.useState(false);
+  // React.useEffect(() => {
+  //   setFormVisivel(formVisivel);
+  // }, [formVisivel]);
   return (
     <StyledRegisterFavorite>
       <button className="add-favorite" onClick={() => setFormVisivel(true)}>
